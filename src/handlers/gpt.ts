@@ -55,12 +55,12 @@ const handleMessageGPT = async (message: Message, prompt: string) => {
 			// Pre prompt
 			if (config.prePrompt != null && config.prePrompt.trim() != "") {
 				cli.print(`[GPT] Pre prompt: ${config.prePrompt}`);
-				const prePromptResponse = await chatgpt.ask(config.prePrompt, conv.id);
-				cli.print("[GPT] Pre prompt response: " + prePromptResponse);
+				response = await chatgpt.ask(config.prePrompt + prompt, conv.id);
+				cli.print("[GPT] Pre prompt response: " + response);
 			}
 
 			// Handle message with new conversation
-			response = await chatgpt.ask(prompt, conv.id);
+			//response = await chatgpt.ask(prompt, conv.id);
 		}
 
 		const end = Date.now() - start;
@@ -74,7 +74,9 @@ const handleMessageGPT = async (message: Message, prompt: string) => {
 		}
 
 		// Default: Text reply
-		message.reply(response);
+		const chatcli = await message.getChat();
+		
+		chatcli.sendMessage(response);
 	} catch (error: any) {
 		console.error("An error occured", error);
 		message.reply("An error occured, please contact the administrator. (" + error.message + ")");

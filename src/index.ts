@@ -69,7 +69,7 @@ const start = async () => {
 
 		await handleIncomingMessage(message);
 	});
-
+	/*
 	// Reply to own message
 	client.on(Events.MESSAGE_CREATE, async (message: Message) => {
 		// Ignore if message is from status broadcast
@@ -83,7 +83,7 @@ const start = async () => {
 
 		await handleIncomingMessage(message);
 	});
-
+	*/
 	// WhatsApp initialization
 	client.initialize();
 };
