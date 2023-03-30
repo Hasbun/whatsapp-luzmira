@@ -9,7 +9,7 @@ import { blobFromSync, File } from "fetch-blob/from.js";
 import config from "../config";
 
 let options = {
-	temperature: 0.3, // OpenAI parameter
+	temperature: 0.4, // OpenAI parameter
 	max_tokens: config.maxModelTokens, // OpenAI parameter [Max response size by tokens]
 	top_p: 1, // OpenAI parameter
 	frequency_penalty: 0, // OpenAI parameter
